@@ -10,13 +10,19 @@ import sys
 import questionary
 from prompt_toolkit.styles import Style
 
-from etray_commissioner.utils.auth import add_user
+from etray_commissioner.utils.auth import add_user, authenticate
 
 STYLE = Style([("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigreen")])
 
 
 def main():
     questionary.print("\nParts Commissioner — Add User\n", style="bold fg:ansigreen")
+
+    password = questionary.password("Enter your password:", qmark=">>", style=STYLE).unsafe_ask()
+    user = authenticate(password)
+    if not user or user["role"] != "admin":
+        questionary.print("   Access denied. Admins only.", style="bold fg:ansired")
+        sys.exit(1)
 
     name = questionary.text("Username:", qmark=">>", style=STYLE).unsafe_ask().strip()
     if not name:
