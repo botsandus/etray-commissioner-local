@@ -3,10 +3,10 @@ requires = ["setuptools>=61.0", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "parts-commissioner"
+name = "etray-commissioner"
 dynamic = ["version"]
 authors = [{ name = "Leander Stephen Desouza", email = "leander.desouza@dexory.com" }]
-description = "Tools for commissioning the parts for the ARRI robot."
+description = "Tools for commissioning the E-tray."
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
@@ -28,10 +28,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/botsandus/parts-commissioner"
+Homepage = "https://github.com/botsandus/etray-commissioner"
 
 [project.scripts]
-parts-commissioner = "parts_commissioner.main:run"
+etray-commissioner = "parts_commissioner.main:run"
 
 [tool.setuptools_scm]
 
