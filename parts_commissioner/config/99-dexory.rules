@@ -1,0 +1,2 @@
+SUBSYSTEM=="tty", ATTRS{idVendor}=="20d2", ATTRS{idProduct}=="5740", ATTRS{serial}=="HDC2XXX", SYMLINK+="roboteq_tower_usb"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", ATTRS{product}=="Roboteq Tower RS232", SYMLINK+="roboteq_tower_rs232"

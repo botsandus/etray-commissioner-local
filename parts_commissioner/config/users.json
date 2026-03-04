@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "name": "admin_placeholder",
+      "role": "admin",
+      "salt": "65d3c72e29ab24537d703a329077e32e",
+      "password_hash": "552b140bdf5b64e72669715dd8d115b1e2f5ed1f53fa6d45ba13e882cf27238a"
+    },
+    {
+      "name": "user_placeholder",
+      "role": "user",
+      "salt": "b6d58ac58b26f4109123da39563f8b00",
+      "password_hash": "f4015c59473b0e052493288b21946a73fb01ff27d17fe85c8aa6e33c74d8ebf0"
+    },
+    {
+      "name": "paul-proteasa",
+      "role": "admin",
+      "salt": "58597ec8b212245235891451f7f4bfbc",
+      "password_hash": "41b2ad2ff41838706b3c81f5fc8b44b5ccdd718092f8716913f971cfce96b53a"
+    },
+    {
+      "name": "user",
+      "role": "user",
+      "salt": "55f798d521fa6d8e1c058fac1dbd1df9",
+      "password_hash": "04229881f17c613236585bccef0d0c1780d6cb4b648b85296cf179ce90b01faf"
+    }
+  ]
+}

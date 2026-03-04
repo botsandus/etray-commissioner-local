@@ -1,0 +1,50 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+            fetch-tags: true
+
+        - name: Install Python dependencies
+          run: pip install .
+
+        - uses: actions/setup-python@v4
+          with:
+              python-version: "3.12"
+              cache: "pip"
+
+        - name: Get latest version
+          id: latest-version
+          run: |
+            LATEST_TAG=$(git tag --sort=v:refname | tail -n 1)
+            echo "version=${LATEST_TAG:1}" > $GITHUB_OUTPUT
+
+        - name: Bump SemVer
+          uses: actions-ecosystem/action-bump-semver@v1
+          id: bump-semver
+          with:
+            current_version: ${{ steps.latest-version.outputs.version }}
+            level: patch
+
+        - name: Get PR details
+          uses: 8BitJonny/gh-get-current-pr@3.0.0
+          id: PR
+          if: github.event_name == 'push'
+
+        - name: Create release
+          uses: softprops/action-gh-release@v2
+          with:
+            body: ${{ steps.PR.outputs.pr_title }}
+            name: ${{ steps.bump-semver.outputs.new_version }}
+            tag_name: "v${{ steps.bump-semver.outputs.new_version }}"
+            make_latest: true
+          if: github.event_name == 'push'

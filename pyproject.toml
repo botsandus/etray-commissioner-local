@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parts-commissioner"
+dynamic = ["version"]
+authors = [{ name = "Leander Stephen Desouza", email = "leander.desouza@dexory.com" }]
+description = "Tools for commissioning the parts for the ARRI robot."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: LINUX",
+]
+dependencies = [
+    "questionary==2.0.1",
+    "rich == 13.9.4",
+    "requests == 2.32.3",
+    "bs4 == 0.0.2",
+    "ttkbootstrap == 1.10.1",
+    "pyserial == 3.5",
+    "appdirs == 1.4.4",
+    "balena-sdk == 14.4.6",
+    "nmcli == 1.5.0",
+    "ouster-sdk == 0.14.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/botsandus/parts-commissioner"
+
+[project.scripts]
+parts-commissioner = "parts_commissioner.main:run"
+
+[tool.setuptools_scm]
+
+[tool.ruff.lint]
+select = [
+    "F",      # Pyflakes
+    "ARG001", # Flag unused arguments
+    "I",      # isort
+    "E",      # Error in Pycodestyle
+]
