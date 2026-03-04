@@ -1,55 +1,47 @@
-# parts-commissioner
-commissioning tools for the parts of the ARRI robot.
+# etray-commissioner-local
+Commissioning tools for the E-tray of the ARRI robot. Fully offline — no internet or GitHub account required.
 
 ## Prerequisites
 
-**Please ensure that you do the following before installing parts-commissioner. You only need to do this once!**
+**Run once on the target machine before installing:**
 
-1. Install the Github cli tool:
+1. Install python3-venv:
    ```bash
-   sudo apt install gh
+   sudo apt install python3-venv
    ```
 
-2. Log into the Github cli tool by running the following command and following the instructions:
-   ```bash
-   gh auth login --web
-   ```
-
-3. Configure the Github cli tool:
-   ```bash
-   gh auth setup-git
-   ```
-
-4. Install pipx packaging tool:
-   ```bash
-   sudo apt install pipx
-   ```
-
-5. Install tkinter:
+2. Install tkinter:
    ```bash
    sudo apt install python3-tk
    ```
 
-6. Install the `libusb-dev` package:
+3. Install the `libusb-dev` package:
    ```bash
    sudo apt install libusb-dev
    ```
 
-7. Finally, add pipx to your path:
+## Installation
+
+1. Copy the `etray-commissioner-local` folder from the USB stick to the target machine.
+
+2. Run the install script:
    ```bash
-   pipx ensurepath
+   cd etray-commissioner-local
+   ./install.sh
    ```
 
-## Installation and Usage
+## Usage
 
-1. Run the following command to install the tool:
+```bash
+./run.sh
+```
 
-    ```bash
-    pipx install git+https://github.com/botsandus/parts-commissioner.git
-    ```
+## Updating the USB Package
 
-2. Now you can run the tool by calling it from a terminal anywhere:
+Run this on the development machine after making changes:
 
-    ```bash
-    parts-commissioner
-    ```
+```bash
+./build_usb.sh
+```
+
+Then copy the updated folder to the USB stick.
