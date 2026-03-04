@@ -33,6 +33,9 @@ Homepage = "https://github.com/botsandus/etray-commissioner"
 [project.scripts]
 etray-commissioner = "etray_commissioner.main:run"
 
+[tool.setuptools]
+packages = ["etray_commissioner"]
+
 [tool.setuptools_scm]
 
 [tool.ruff.lint]
