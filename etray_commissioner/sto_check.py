@@ -28,7 +28,8 @@ def check():
     cmd = (
         f"ssh -oStrictHostKeyChecking=no -t root@{NUC_IP} "
         f'"/usr/bin/balena exec -it \\$(/usr/bin/balena ps -q -f name=ros) '
-        f"bash -c 'source /opt/ros/kilted/setup.bash && ros2 topic echo {ROS_TOPIC}'\"; read -p 'Press Enter to close...'"
+        f"bash -c 'source /opt/ros/kilted/setup.bash && ros2 topic echo {ROS_TOPIC}'\""
+        "; read -p 'Press Enter to close...'"
     )
 
     subprocess.Popen(["gnome-terminal", "--", "bash", "-c", cmd])

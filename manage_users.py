@@ -21,7 +21,9 @@ STYLE = Style([("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigre
 def main():
     questionary.print("\nParts Commissioner — Add User\n", style="bold fg:ansigreen")
 
-    password = questionary.password("Enter your password:", qmark=">>", style=STYLE).unsafe_ask()
+    password = questionary.password(
+        "Enter your password:", qmark=">>", style=STYLE
+    ).unsafe_ask()
     user = authenticate(password)
     if not user or user["role"] != "admin":
         questionary.print("   Access denied. Admins only.", style="bold fg:ansired")
@@ -47,7 +49,10 @@ def main():
         sys.exit(1)
 
     add_user(name, role, password)
-    _audit.info("user=%s role=%s action=ManageUsers target_user=%s target_role=%s", user["name"], user["role"], name, role)
+    _audit.info(
+        "user=%s role=%s action=ManageUsers target_user=%s target_role=%s",
+        user["name"], user["role"], name, role,
+    )
     questionary.print(
         f"   User '{name}' ({role}) saved successfully.", style="bold fg:ansigreen"
     )

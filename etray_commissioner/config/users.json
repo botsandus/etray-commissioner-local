@@ -23,6 +23,24 @@
       "role": "user",
       "salt": "55f798d521fa6d8e1c058fac1dbd1df9",
       "password_hash": "04229881f17c613236585bccef0d0c1780d6cb4b648b85296cf179ce90b01faf"
+    },
+    {
+      "name": "adam-iwinski",
+      "role": "admin",
+      "salt": "004e1dbfb4696e7d0c728200ef26904c",
+      "password_hash": "8db1ba05941f550a5c63691a4cdd4e108a774034bb5b0f751804002aed146130"
+    },
+    {
+      "name": "brett-greenfield",
+      "role": "admin",
+      "salt": "5f8cfc90da3aed6a90611fc334ba16a1",
+      "password_hash": "01ebca2b3e2d5cd55c64892f4e16c7eba75a1ac6be26348e0d2013238d8fb0a0"
+    },
+    {
+      "name": "procopio-stein",
+      "role": "admin",
+      "salt": "0baf08cb27022dbe9d63c6036d84110b",
+      "password_hash": "d7b4cd6edeb7acfd2db6b74eaaa5110da08d1bd619014193c47bf13b18124a21"
     }
   ]
 }
