@@ -135,14 +135,16 @@ def login() -> dict:
 def run():
     """Entry point for the parts commissioner application."""
     module_name = "etray-commissioner"
-    fetch_update.check(module_name)
 
     data_dir_path = AppDirs(module_name).user_data_dir
     pathlib.Path(data_dir_path).mkdir(parents=True, exist_ok=True)
 
     questionary.print("You are using Parts Commissioner!\n", style="bold fg:ansigreen")
 
-    login()
+    user = login()
+
+    if user.get("role") == "admin":
+        fetch_update.check(module_name)
 
     try:
         toggle_menu()
