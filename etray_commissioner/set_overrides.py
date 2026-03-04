@@ -9,12 +9,14 @@ import yaml
 from rich.console import Console
 
 from etray_commissioner.roboteq_motor_controller import NUC_IP
+from etray_commissioner.utils.logger import get_logger, log_path
 
 RM_OVERRIDES_ENDPOINT = "/api/v1/config/overrides"
 RM_SERVICES_ENDPOINT = "/api/v1/system/services"
 EXPECTED_VARS_FILE = os.path.join(
     os.path.dirname(__file__), "config", "rm_overrides.yaml"
 )
+_log = get_logger()
 
 
 def _get_overrides():
@@ -54,6 +56,8 @@ def _restart_service(service):
 
 def configure():
     """Sets Robot Manager overrides via wired connection to the NUC."""
+    _log.info("Starting Set RM Overrides")
+
     num_sections_str = questionary.text(
         "Number of tower sections:",
         validate=lambda x: x.isdigit() and int(x) > 0 or "Enter a valid number",
@@ -64,11 +68,13 @@ def configure():
         current = _get_overrides()
 
     if current is None:
+        _log.error("Failed to get RM overrides from %s", NUC_IP)
         questionary.print(
             "\n   - Failed to get overrides."
             " Make sure the robot is connected via wired cable.\n",
             style="bold ansired",
         )
+        questionary.print(f"   See log: {log_path()}", style="fg:ansiyellow")
         return
 
     with open(EXPECTED_VARS_FILE, "r") as f:
@@ -81,9 +87,12 @@ def configure():
         ok = _set_overrides(current)
 
     if not ok:
+        _log.error("Failed to set RM overrides on %s", NUC_IP)
         questionary.print("   - Failed to set overrides!", style="bold ansired")
+        questionary.print(f"   See log: {log_path()}", style="fg:ansiyellow")
         return
 
+    _log.info("RM overrides set successfully (NUM_TOWER_SECTIONS=%d)", num_sections)
     questionary.print("   - Overrides set successfully!", style="bold ansigreen")
 
     with Console().status("[bold cyan] Restarting services...", spinner="dots"):
@@ -91,7 +100,12 @@ def configure():
         rm_ok = _restart_service("robot-manager")
 
     if not ros_ok or not rm_ok:
+        _log.error(
+            "Failed to restart services (ros_prod=%s, robot-manager=%s)", ros_ok, rm_ok
+        )
         questionary.print("   - Failed to restart services!", style="bold ansired")
+        questionary.print(f"   See log: {log_path()}", style="fg:ansiyellow")
         return
 
+    _log.info("Services restarted successfully")
     questionary.print("   - Services restarted successfully!", style="bold ansigreen")

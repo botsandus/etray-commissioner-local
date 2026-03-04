@@ -23,6 +23,9 @@ from etray_commissioner import (
 from etray_commissioner.robosense_config import SENSOR_TYPES
 from etray_commissioner.utils import fetch_update
 from etray_commissioner.utils.auth import authenticate
+from etray_commissioner.utils.logger import get_logger
+
+_log = get_logger()
 
 QUESTIONARY_STYLE = Style(
     [("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigreen")]
@@ -112,6 +115,7 @@ def login() -> dict:
 
         user = authenticate(password)
         if user:
+            _log.info("Login successful: %s (%s)", user["name"], user["role"])
             questionary.print(
                 f"   Welcome, {user['name']}!\n", style="bold fg:ansigreen"
             )

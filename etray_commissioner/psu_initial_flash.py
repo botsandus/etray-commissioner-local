@@ -8,31 +8,32 @@ import questionary
 from rich.console import Console
 
 from etray_commissioner.roboteq_motor_controller import NUC_IP, is_device_available
+from etray_commissioner.utils.logger import get_logger, log_path
 
 HEX_FILE = "firmware-unified-psu-v2.0.1-78fc610-main-PRODUCTION.hex"
+_log = get_logger()
 
 
 def flash():
     """Performs initial flash of the Gen6 PSU Teensy via the NUC."""
-    flash_result = True
+    _log.info("Starting Gen6 PSU initial Teensy flash")
 
     with Console().status(
         "[bold cyan] Waiting for the device to be available...", spinner="dots"
     ):
         if not is_device_available(NUC_IP):
+            _log.error("NUC not reachable at %s", NUC_IP)
             questionary.print(
                 "\n   - The NUC is not reachable."
                 " Make sure the robot is connected via wired cable.\n",
                 style="bold ansired",
             )
-            flash_result = False
+            questionary.print(f"   See log: {log_path()}", style="fg:ansiyellow")
+            return
 
     # Clear the spinner
     sys.stdout.write("\0337\033[3F\033[K\0338")
     sys.stdout.flush()
-
-    if not flash_result:
-        return
 
     questionary.print(
         "   Flashing the Gen6 PSU Teensy firmware...", style="bold fg:ansicyan"
@@ -53,15 +54,19 @@ def flash():
     )
 
     if proc.returncode != 0:
+        _log.error(
+            "Initial Teensy flash failed (rc=%d). stdout: %s stderr: %s",
+            proc.returncode,
+            proc.stdout,
+            proc.stderr,
+        )
         questionary.print(
             "  - Failed to perform the initial Teensy flash!", style="bold ansired"
         )
-        if proc.stdout:
-            questionary.print(proc.stdout, style="fg:ansired")
-        if proc.stderr:
-            questionary.print(proc.stderr, style="fg:ansired")
+        questionary.print(f"   See log: {log_path()}", style="fg:ansiyellow")
         return
 
+    _log.info("Gen6 PSU initial Teensy flash successful")
     questionary.print(
         "   - The Gen6 PSU Teensy firmware has been flashed successfully!",
         style="bold ansigreen",
