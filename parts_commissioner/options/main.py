@@ -9,6 +9,7 @@ TELTONIKA = "Teltonika"
 RS232 = "RS232 Cable"
 TEENSY = "Teensy"
 GEN6_PSU_FIRMWARE = "Gen6 PSU Firmware"
+SET_OVERRIDES = "Set RM Overrides"
 EXIT = "Exit"
 
 PARTS_OPTIONS = [
@@ -22,5 +23,6 @@ PARTS_OPTIONS = [
     RS232,
     TEENSY,
     GEN6_PSU_FIRMWARE,
+    SET_OVERRIDES,
     EXIT,
 ]

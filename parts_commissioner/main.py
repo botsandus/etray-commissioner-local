@@ -15,6 +15,7 @@ from parts_commissioner import (
     lidar_configurator,
     roboteq_motor_controller,
     rs232,
+    set_overrides,
     teensy,
     teltonika,
     vna_sensor,
@@ -84,6 +85,9 @@ def toggle_menu():
 
         elif choice == main_options.GEN6_PSU_FIRMWARE:
             gen6_psu.flash()
+
+        elif choice == main_options.SET_OVERRIDES:
+            set_overrides.configure()
 
         elif choice == "Exit":
             sys.exit()  # Exit the application
