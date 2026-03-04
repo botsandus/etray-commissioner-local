@@ -44,4 +44,10 @@ Run this on the development machine after making changes:
 ./build_usb.sh
 ```
 
+Before copying to the USB stick, place the shared SSH key in the `ssh/` folder:
+
+```bash
+cp ~/.ssh/dexory_shared.key ssh/dexory_shared.key
+```
+
 Then copy the updated folder to the USB stick.
