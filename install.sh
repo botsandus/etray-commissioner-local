@@ -12,18 +12,15 @@ if [ ! -d "deps" ]; then
     exit 1
 fi
 
-if ! dpkg -l python3-venv &>/dev/null; then
-    echo "Installing python3-venv..."
-    sudo apt install -y python3-venv
+if ! command -v pipx &>/dev/null; then
+    echo "Installing pipx..."
+    sudo apt install -y pipx
+    pipx ensurepath
 fi
 
-echo "Creating virtual environment..."
-python3 -m venv venv
-
 echo "Installing etray-commissioner..."
-source venv/bin/activate
-pip install --no-index --find-links deps/ etray-commissioner-local
-deactivate
+pipx install --pip-args="--no-index --find-links $SCRIPT_DIR/deps/" \
+    "$SCRIPT_DIR/deps/etray_commissioner_local-"*.whl
 
 # SSH key setup for NUC access
 if [ -f "ssh/dexory_shared.key" ]; then
@@ -50,4 +47,5 @@ EOF
 fi
 
 echo ""
-echo "Installation complete. Run ./run.sh to start."
+echo "Installation complete."
+echo "Open a new terminal and run: etray-commissioner"

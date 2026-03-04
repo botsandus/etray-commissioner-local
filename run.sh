@@ -1,14 +1,11 @@
 #!/bin/bash
 # Launches etray-commissioner.
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
-
-if [ ! -d "venv" ]; then
-    echo "Virtual environment not found. Running install.sh first..."
-    ./install.sh
+if ! command -v etray-commissioner &>/dev/null; then
+    echo "etray-commissioner not found. Running install.sh first..."
+    "$(dirname "${BASH_SOURCE[0]}")/install.sh"
+    echo "Please open a new terminal and run: etray-commissioner"
+    exit 0
 fi
 
-source venv/bin/activate
 etray-commissioner
-deactivate
