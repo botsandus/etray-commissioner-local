@@ -130,7 +130,7 @@ def login() -> dict:
 
 def run():
     """Entry point for the parts commissioner application."""
-    module_name = "etray-commissioner"
+    module_name = "etray-commissioner-local"
 
     data_dir_path = AppDirs(module_name).user_data_dir
     pathlib.Path(data_dir_path).mkdir(parents=True, exist_ok=True)
