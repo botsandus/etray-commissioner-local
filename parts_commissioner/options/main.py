@@ -10,6 +10,7 @@ RS232 = "RS232 Cable"
 TEENSY = "Teensy"
 GEN6_PSU_FIRMWARE = "Gen6 PSU Firmware"
 SET_OVERRIDES = "Set RM Overrides"
+STO_CHECK = "STO Check"
 EXIT = "Exit"
 
 PARTS_OPTIONS = [
@@ -24,5 +25,6 @@ PARTS_OPTIONS = [
     TEENSY,
     GEN6_PSU_FIRMWARE,
     SET_OVERRIDES,
+    STO_CHECK,
     EXIT,
 ]

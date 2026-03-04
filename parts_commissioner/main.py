@@ -16,6 +16,7 @@ from parts_commissioner import (
     roboteq_motor_controller,
     rs232,
     set_overrides,
+    sto_check,
     teensy,
     teltonika,
     vna_sensor,
@@ -88,6 +89,9 @@ def toggle_menu():
 
         elif choice == main_options.SET_OVERRIDES:
             set_overrides.configure()
+
+        elif choice == main_options.STO_CHECK:
+            sto_check.check()
 
         elif choice == "Exit":
             sys.exit()  # Exit the application
