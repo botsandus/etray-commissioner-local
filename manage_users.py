@@ -11,6 +11,9 @@ import questionary
 from prompt_toolkit.styles import Style
 
 from etray_commissioner.utils.auth import add_user, authenticate
+from etray_commissioner.utils.logger import get_audit_logger
+
+_audit = get_audit_logger()
 
 STYLE = Style([("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigreen")])
 
@@ -44,6 +47,7 @@ def main():
         sys.exit(1)
 
     add_user(name, role, password)
+    _audit.info("user=%s role=%s action=ManageUsers target_user=%s target_role=%s", user["name"], user["role"], name, role)
     questionary.print(
         f"   User '{name}' ({role}) saved successfully.", style="bold fg:ansigreen"
     )

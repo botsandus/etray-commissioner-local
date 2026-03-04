@@ -23,16 +23,17 @@ from etray_commissioner import (
 from etray_commissioner.robosense_config import SENSOR_TYPES
 from etray_commissioner.utils import fetch_update
 from etray_commissioner.utils.auth import authenticate
-from etray_commissioner.utils.logger import get_logger
+from etray_commissioner.utils.logger import get_audit_logger, get_logger
 
 _log = get_logger()
+_audit = get_audit_logger()
 
 QUESTIONARY_STYLE = Style(
     [("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigreen")]
 )
 
 
-def robosense_menu():
+def robosense_menu(user: dict):
     """Handles Robosense-related options."""
     sensor_types = [sensor.capitalize() for sensor in SENSOR_TYPES.keys()] + ["Go Back"]
     while True:
@@ -44,12 +45,13 @@ def robosense_menu():
         ).unsafe_ask()
 
         if robosense_choice == "Go Back":
-            break  # Return to the main menu
+            break
         else:
+            _audit.info("user=%s role=%s action=Robosense/%s", user["name"], user["role"], robosense_choice)
             lidar_configurator.configure_mode(robosense_choice)
 
 
-def toggle_menu():
+def toggle_menu(user: dict):
     """Main menu for selecting parts to commission."""
     while True:
         choice = questionary.select(
@@ -60,40 +62,51 @@ def toggle_menu():
         ).unsafe_ask()
 
         if choice == "Robosense":
-            robosense_menu()  # Open the Robosense submenu
+            robosense_menu(user)
 
         elif choice == main_options.OS1_Lidars:
+            _audit.info("user=%s role=%s action=%s", user["name"], user["role"], choice)
             lidar_configurator.configure_mode("OS1")
 
         elif choice == main_options.VNA_SENSOR:
+            _audit.info("user=%s role=%s action=%s", user["name"], user["role"], choice)
             vna_sensor.configure_vna()
 
         elif choice == main_options.BASE_ROBOTEQ_MOTOR_CONTROLLER:
+            _audit.info("user=%s role=%s action=%s", user["name"], user["role"], choice)
             roboteq_motor_controller.flash()
 
         elif choice == main_options.BASE_ROBOTEQ_MOTOR_CONTROLLER_REMOTE:
+            _audit.info("user=%s role=%s action=%s", user["name"], user["role"], choice)
             roboteq_motor_controller.flash_remote()
 
         elif choice == main_options.TELTONIKA:
+            _audit.info("user=%s role=%s action=%s", user["name"], user["role"], choice)
             teltonika.flash()
 
         elif choice == main_options.RS232:
+            _audit.info("user=%s role=%s action=%s", user["name"], user["role"], choice)
             rs232.flash()
 
         elif choice == main_options.TEENSY:
+            _audit.info("user=%s role=%s action=%s", user["name"], user["role"], choice)
             teensy.flash()
 
         elif choice == main_options.GEN6_PSU_FIRMWARE:
+            _audit.info("user=%s role=%s action=%s", user["name"], user["role"], choice)
             gen6_psu.flash()
 
         elif choice == main_options.SET_OVERRIDES:
+            _audit.info("user=%s role=%s action=%s", user["name"], user["role"], choice)
             set_overrides.configure()
 
         elif choice == main_options.STO_CHECK:
+            _audit.info("user=%s role=%s action=%s", user["name"], user["role"], choice)
             sto_check.check()
 
         elif choice == "Exit":
-            sys.exit()  # Exit the application
+            _audit.info("user=%s role=%s action=Exit", user["name"], user["role"])
+            sys.exit()
 
         else:
             questionary.print("   - Not yet implemented!", style="bold fg:ansired")
@@ -142,12 +155,13 @@ def run():
     questionary.print("You are using Parts Commissioner!\n", style="bold fg:ansigreen")
 
     user = login()
+    _audit.info("user=%s role=%s action=Login", user["name"], user["role"])
 
     if user.get("role") == "admin":
         fetch_update.check(module_name)
 
     try:
-        toggle_menu()
+        toggle_menu(user)
     except KeyboardInterrupt:
         questionary.print("   - Interrupted by user!", style="bold fg:ansired")
         sys.exit()
