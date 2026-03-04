@@ -49,9 +49,7 @@ def get_audit_logger() -> logging.Logger:
     audit_logger.propagate = False
 
     handler = logging.FileHandler(AUDIT_LOG_FILE, mode="a", encoding="utf-8")
-    handler.setFormatter(
-        logging.Formatter("%(asctime)s [AUDIT] %(message)s")
-    )
+    handler.setFormatter(logging.Formatter("%(asctime)s [AUDIT] %(message)s"))
     audit_logger.addHandler(handler)
 
     return audit_logger

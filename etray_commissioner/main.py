@@ -49,7 +49,9 @@ def robosense_menu(user: dict):
         else:
             _audit.info(
                 "user=%s role=%s action=Robosense/%s",
-                user["name"], user["role"], robosense_choice,
+                user["name"],
+                user["role"],
+                robosense_choice,
             )
             lidar_configurator.configure_mode(robosense_choice)
 
