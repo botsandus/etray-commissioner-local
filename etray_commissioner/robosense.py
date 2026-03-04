@@ -3,9 +3,9 @@ import subprocess
 import questionary
 from prompt_toolkit.styles import Style
 
-import parts_commissioner.utils.network as network
-from parts_commissioner.options.configuration_types import AUTOMATIC, GO_BACK
-from parts_commissioner.robosense_config import SENSOR_TYPES
+import etray_commissioner.utils.network as network
+from etray_commissioner.options.configuration_types import AUTOMATIC, GO_BACK
+from etray_commissioner.robosense_config import SENSOR_TYPES
 
 QUESTIONARY_STYLE = Style(
     [("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigreen")]

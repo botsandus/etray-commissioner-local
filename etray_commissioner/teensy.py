@@ -6,8 +6,8 @@ import os
 
 import questionary
 
-# from parts_commissioner.utils import gh
-from parts_commissioner.utils.fetch_firmware_unified_psu import (
+# from etray_commissioner.utils import gh
+from etray_commissioner.utils.fetch_firmware_unified_psu import (
     DATA_DIR,
     REPO_NAME,
     download_latest,

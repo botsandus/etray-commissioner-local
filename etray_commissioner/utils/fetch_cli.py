@@ -8,9 +8,9 @@ from typing import Optional
 import questionary
 from appdirs import AppDirs
 
-from parts_commissioner.utils import gh
+from etray_commissioner.utils import gh
 
-DATA_DIR = AppDirs("parts-commissioner").user_data_dir
+DATA_DIR = AppDirs("etray-commissioner").user_data_dir
 CLI_DIR = os.path.join(DATA_DIR, "cli")
 REPO_NAME = "botsandus/cli"
 LATEST_VERSION = "v2.0.0"
@@ -30,7 +30,7 @@ def get_current_version() -> Optional[str]:
     """
     if not os.path.exists(DATA_DIR):
         raise FileNotFoundError(
-            "The data directory for parts-commissioner "
+            "The data directory for etray-commissioner "
             f"has not been created: {DATA_DIR}"
         )
 
@@ -48,7 +48,7 @@ def get_current_version() -> Optional[str]:
             f"The cli directory ({CLI_DIR}) contains "
             "several folders/files. "
             "Please delete all the files/folders in this directory "
-            "and rerun parts-commissioner "
+            "and rerun etray-commissioner "
             "to download the latest version of the cli."
         )
 
@@ -58,7 +58,7 @@ def get_current_version() -> Optional[str]:
             f"The cli directory ({CLI_DIR}) contains "
             "a file instead of a directory. "
             "Please delete the file in this directory "
-            "and rerun parts-commissioner to download the "
+            "and rerun etray-commissioner to download the "
             "latest version of the cli."
         )
 
@@ -84,7 +84,7 @@ def download_latest() -> bool:
     try:
         if not os.path.isdir(DATA_DIR):
             questionary.print(
-                " - The data directory for parts-commissioner does not exist. "
+                " - The data directory for etray-commissioner does not exist. "
                 "Please create the directory and rerun the command.",
                 style="fg:ansired",
             )

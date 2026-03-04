@@ -8,7 +8,7 @@ import questionary
 from prompt_toolkit.styles import Style
 from serial import Serial, SerialException
 
-import parts_commissioner.options.vna as vna_options
+import etray_commissioner.options.vna as vna_options
 
 QUESTIONARY_STYLE = Style(
     [("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigreen")]

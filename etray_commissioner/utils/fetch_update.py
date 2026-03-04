@@ -4,7 +4,7 @@ from importlib.metadata import version
 
 import questionary
 
-from parts_commissioner.utils import gh
+from etray_commissioner.utils import gh
 
 
 def check(module_name: str):

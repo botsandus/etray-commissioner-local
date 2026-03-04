@@ -6,23 +6,23 @@ import os
 import questionary
 from appdirs import AppDirs
 
-from parts_commissioner.options import cli as cli_options
+from etray_commissioner.options import cli as cli_options
 
-# from parts_commissioner.utils import gh
-from parts_commissioner.utils.fetch_cli import (
+# from etray_commissioner.utils import gh
+from etray_commissioner.utils.fetch_cli import (
     LATEST_VERSION,
     are_cli_installed,
     download_latest,
     update_cli,
 )
 
-DATA_DIR = AppDirs("parts-commissioner").user_data_dir
+DATA_DIR = AppDirs("etray-commissioner").user_data_dir
 REPO_NAME = "botsandus/cli"
 
 
 def flash():
     """Flashes the Teltonika router."""
-    from parts_commissioner.main import QUESTIONARY_STYLE
+    from etray_commissioner.main import QUESTIONARY_STYLE
 
     if not are_cli_installed():
         questionary.print(

@@ -26,8 +26,8 @@ for dep in "${DEPENDENCIES[@]}"; do
     fi
 done
 
-# Run parts-commissioner
-parts-commissioner
+# Run etray-commissioner
+etray-commissioner
 
 # Deactivate the virtual environment
 deactivate

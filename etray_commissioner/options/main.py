@@ -1,4 +1,4 @@
-"""Main options for the parts_commissioner CLI."""
+"""Main options for the etray_commissioner CLI."""
 
 OS1_Lidars = "OS1 Lidars"
 IMAGE_GENERATION = "Image Generation"

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Script to add users and set their passwords for parts-commissioner.
+"""Script to add users and set their passwords for etray-commissioner.
 
 Usage:
     python manage_users.py
@@ -10,7 +10,7 @@ import sys
 import questionary
 from prompt_toolkit.styles import Style
 
-from parts_commissioner.utils.auth import add_user
+from etray_commissioner.utils.auth import add_user
 
 STYLE = Style([("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigreen")])
 

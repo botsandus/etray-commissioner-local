@@ -7,9 +7,9 @@ import subprocess
 import questionary
 from appdirs import AppDirs
 
-from parts_commissioner.utils.git_fetch_repo import download_repo
+from etray_commissioner.utils.git_fetch_repo import download_repo
 
-MODULE_NAME = "parts-commissioner"
+MODULE_NAME = "etray-commissioner"
 DATA_DIR = AppDirs(MODULE_NAME).user_data_dir
 REPO_NAME = "auto-tower"
 REPO_DIR = os.path.join(DATA_DIR, REPO_NAME)

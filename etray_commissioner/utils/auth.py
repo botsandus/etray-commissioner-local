@@ -1,4 +1,4 @@
-"""Authentication utility for parts-commissioner."""
+"""Authentication utility for etray-commissioner."""
 
 import hashlib
 import json

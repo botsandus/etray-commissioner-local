@@ -8,9 +8,9 @@ import questionary
 from appdirs import AppDirs
 from rich.console import Console
 
-from parts_commissioner.utils import gh
+from etray_commissioner.utils import gh
 
-MODULE_NAME = "parts-commissioner"
+MODULE_NAME = "etray-commissioner"
 DATA_DIR = AppDirs(MODULE_NAME).user_data_dir
 
 

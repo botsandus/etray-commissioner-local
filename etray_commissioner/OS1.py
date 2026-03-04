@@ -7,8 +7,8 @@ import time
 import questionary
 import requests
 
-import parts_commissioner.utils.network as network
-from parts_commissioner.os1_config import SENSOR_TYPES
+import etray_commissioner.utils.network as network
+from etray_commissioner.os1_config import SENSOR_TYPES
 
 
 def find_os1_ip() -> str | None:

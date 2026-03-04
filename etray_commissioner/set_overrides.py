@@ -8,7 +8,7 @@ import requests
 import yaml
 from rich.console import Console
 
-from parts_commissioner.roboteq_motor_controller import NUC_IP
+from etray_commissioner.roboteq_motor_controller import NUC_IP
 
 RM_OVERRIDES_ENDPOINT = "/api/v1/config/overrides"
 RM_SERVICES_ENDPOINT = "/api/v1/system/services"

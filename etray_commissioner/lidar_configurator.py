@@ -4,9 +4,9 @@
 import questionary
 from prompt_toolkit.styles import Style
 
-from parts_commissioner.options.configuration_types import AUTOMATIC, GO_BACK, MANUAL
-from parts_commissioner.OS1 import configure_os1
-from parts_commissioner.robosense import configure_robosense
+from etray_commissioner.options.configuration_types import AUTOMATIC, GO_BACK, MANUAL
+from etray_commissioner.OS1 import configure_os1
+from etray_commissioner.robosense import configure_robosense
 
 QUESTIONARY_STYLE = Style(
     [("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigreen")]

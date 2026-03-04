@@ -8,8 +8,8 @@ import questionary
 from appdirs import AppDirs
 from prompt_toolkit.styles import Style
 
-import parts_commissioner.options.main as main_options
-from parts_commissioner import (
+import etray_commissioner.options.main as main_options
+from etray_commissioner import (
     gen6_psu,
     image_generation,
     lidar_configurator,
@@ -21,9 +21,9 @@ from parts_commissioner import (
     teltonika,
     vna_sensor,
 )
-from parts_commissioner.robosense_config import SENSOR_TYPES
-from parts_commissioner.utils import fetch_update
-from parts_commissioner.utils.auth import authenticate
+from etray_commissioner.robosense_config import SENSOR_TYPES
+from etray_commissioner.utils import fetch_update
+from etray_commissioner.utils.auth import authenticate
 
 QUESTIONARY_STYLE = Style(
     [("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigreen")]
@@ -134,7 +134,7 @@ def login() -> dict:
 
 def run():
     """Entry point for the parts commissioner application."""
-    module_name = "parts-commissioner"
+    module_name = "etray-commissioner"
     fetch_update.check(module_name)
 
     data_dir_path = AppDirs(module_name).user_data_dir

@@ -5,7 +5,7 @@ import subprocess
 
 import questionary
 
-from parts_commissioner.roboteq_motor_controller import NUC_IP
+from etray_commissioner.roboteq_motor_controller import NUC_IP
 
 ROS_TOPIC = "/base_motors/estop_state"
 

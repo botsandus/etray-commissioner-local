@@ -7,7 +7,7 @@ import sys
 import questionary
 from rich.console import Console
 
-from parts_commissioner.roboteq_motor_controller import NUC_IP, is_device_available
+from etray_commissioner.roboteq_motor_controller import NUC_IP, is_device_available
 
 HEX_FILE = "firmware-unified-psu-v2.0.1-78fc610-main-PRODUCTION.hex"
 

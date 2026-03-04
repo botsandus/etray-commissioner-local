@@ -8,9 +8,9 @@ import questionary
 from appdirs import AppDirs
 from prompt_toolkit.styles import Style
 
-import parts_commissioner.options.image_generation as image_generation_options
-import parts_commissioner.options.workers as workers_options
-from parts_commissioner.utils.git_fetch_repo import download_repo
+import etray_commissioner.options.image_generation as image_generation_options
+import etray_commissioner.options.workers as workers_options
+from etray_commissioner.utils.git_fetch_repo import download_repo
 
 ROBOT_REGEX = r"arri-[1-9]\d*$"
 WORKERS_IDX_REGEX = r"^[1-9]|10$"
@@ -20,7 +20,7 @@ QUESTIONARY_STYLE = Style(
     [("pointer", "bold fg:ansiblue"), ("highlighted", "bold fg:ansigreen")]
 )
 
-MODULE_NAME = "parts-commissioner"
+MODULE_NAME = "etray-commissioner"
 DATA_DIR = AppDirs(MODULE_NAME).user_data_dir
 REPO_NAME = "arri-os-images"
 REPO_DIR = os.path.join(DATA_DIR, REPO_NAME)
