@@ -11,7 +11,6 @@ from prompt_toolkit.styles import Style
 import etray_commissioner.options.main as main_options
 from etray_commissioner import (
     gen6_psu,
-    image_generation,
     lidar_configurator,
     roboteq_motor_controller,
     rs232,
@@ -62,9 +61,6 @@ def toggle_menu():
 
         elif choice == main_options.OS1_Lidars:
             lidar_configurator.configure_mode("OS1")
-
-        elif choice == main_options.IMAGE_GENERATION:
-            image_generation.configure()
 
         elif choice == main_options.VNA_SENSOR:
             vna_sensor.configure_vna()

@@ -1,7 +1,6 @@
 """Main options for the etray_commissioner CLI."""
 
 OS1_Lidars = "OS1 Lidars"
-IMAGE_GENERATION = "Image Generation"
 VNA_SENSOR = "VNA Sensor"
 BASE_ROBOTEQ_MOTOR_CONTROLLER = "Base Roboteq Motor Controller (Local)"
 BASE_ROBOTEQ_MOTOR_CONTROLLER_REMOTE = "Base Roboteq Motor Controller (Remote)"
@@ -16,7 +15,6 @@ EXIT = "Exit"
 PARTS_OPTIONS = [
     # robosense from main.py
     OS1_Lidars,
-    IMAGE_GENERATION,
     VNA_SENSOR,
     BASE_ROBOTEQ_MOTOR_CONTROLLER,
     BASE_ROBOTEQ_MOTOR_CONTROLLER_REMOTE,
