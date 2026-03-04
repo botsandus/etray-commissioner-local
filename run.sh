@@ -1,5 +1,5 @@
 #!/bin/bash
-# Launches etray-commissioner-local.
+# Launches etray-commissioner.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
@@ -10,5 +10,5 @@ if [ ! -d "venv" ]; then
 fi
 
 source venv/bin/activate
-etray-commissioner-local
+etray-commissioner
 deactivate

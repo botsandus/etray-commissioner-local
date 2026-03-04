@@ -31,7 +31,7 @@ dependencies = [
 Homepage = "https://github.com/botsandus/etray-commissioner"
 
 [project.scripts]
-etray-commissioner-local = "etray_commissioner.main:run"
+etray-commissioner = "etray_commissioner.main:run"
 
 [tool.setuptools_scm]
 
