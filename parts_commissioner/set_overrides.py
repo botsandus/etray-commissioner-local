@@ -12,7 +12,9 @@ from parts_commissioner.roboteq_motor_controller import NUC_IP
 
 RM_OVERRIDES_ENDPOINT = "/api/v1/config/overrides"
 RM_SERVICES_ENDPOINT = "/api/v1/system/services"
-EXPECTED_VARS_FILE = os.path.join(os.path.dirname(__file__), "config", "rm_overrides.yaml")
+EXPECTED_VARS_FILE = os.path.join(
+    os.path.dirname(__file__), "config", "rm_overrides.yaml"
+)
 
 
 def _get_overrides():
@@ -27,7 +29,9 @@ def _get_overrides():
 
 def _set_overrides(overrides):
     try:
-        res = requests.put(f"http://{NUC_IP}{RM_OVERRIDES_ENDPOINT}", json=overrides, timeout=6)
+        res = requests.put(
+            f"http://{NUC_IP}{RM_OVERRIDES_ENDPOINT}", json=overrides, timeout=6
+        )
         return res.ok
     except (requests.ConnectionError, requests.Timeout):
         return False

@@ -42,8 +42,9 @@ def flash():
             "ssh",
             "-oStrictHostKeyChecking=no",
             f"root@{NUC_IP}",
-            "serial=$(udevadm info /dev/ttyACM0 | grep ID_USB_SERIAL_SHORT | cut -d= -f2) && "
-            f'balena exec $(balena ps -q -f name=firm) '
+            "serial=$(udevadm info /dev/ttyACM0 | grep ID_USB_SERIAL_SHORT"
+            " | cut -d= -f2) && "
+            f"balena exec $(balena ps -q -f name=firm) "
             f'bash -c "cd firmware/teensy41/ && flash.sh TEENSY41 $serial {HEX_FILE}"',
         ],
         check=False,

@@ -4,7 +4,9 @@ import hashlib
 import json
 import os
 
-USERS_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config", "users.json")
+USERS_FILE = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)), "config", "users.json"
+)
 
 
 def _hash_password(salt: str, password: str) -> str:

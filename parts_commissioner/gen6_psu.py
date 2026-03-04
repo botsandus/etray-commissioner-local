@@ -7,8 +7,8 @@ import sys
 import questionary
 from rich.console import Console
 
-from parts_commissioner.roboteq_motor_controller import NUC_IP, is_device_available
 from parts_commissioner import psu_initial_flash
+from parts_commissioner.roboteq_motor_controller import NUC_IP, is_device_available
 
 
 def flash():

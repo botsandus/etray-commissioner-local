@@ -11,7 +11,7 @@ ROS_TOPIC = "/base_motors/estop_state"
 
 
 def check():
-    """Opens a new terminal to monitor the STO topic and prompts the user to toggle the switch."""
+    """Monitors the STO topic in a new terminal and asks user to verify the toggle."""
     questionary.print(
         "\n   Opening STO topic monitor in a new terminal...",
         style="bold fg:ansicyan",
@@ -34,9 +34,7 @@ def check():
     ).unsafe_ask()
 
     if confirmed:
-        questionary.print(
-            "   - STO check passed!", style="bold ansigreen"
-        )
+        questionary.print("   - STO check passed!", style="bold ansigreen")
     else:
         questionary.print(
             "   - STO check failed. Please investigate before proceeding.",
